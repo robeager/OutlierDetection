@@ -34,9 +34,9 @@ for (i in 1:miniColumnCount) {
     k[j] = (k[j]-1)
   }
   
-  rn <- seq(0,to = 1, length = 85) #rnorm((1000),mean = connectionThreshold, sd = 1)
-  rn <- dnorm(rn,mean = connectionThreshold, sd = 1)
-
+  rn <- rnorm(85,connectionThreshold,sd = 1)
+  rn <- round(pnorm(rn,mean = connectionThreshold, sd = 1),2)
+  
   spList[[i]] <- k
   permList[[i]] <- rn
 }
