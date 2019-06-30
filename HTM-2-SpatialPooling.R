@@ -4,7 +4,7 @@
 
 miniColumnCount = 2048 #Number of minicolumns available
 connectedPercent = 0.85 #sets out how much of the input space is covered by the each column (randomly)
-connectionThreshold = 0.2
+connectionThreshold = 0.5
 
 #PRad = 631 #Potential Radius - how is this number calculated?
 #LAD = -1 #Local Area Density WTF is this for?
@@ -36,16 +36,9 @@ for (i in 1:miniColumnCount) {
   
   rn <- seq(0,to = 1, length = 85) #rnorm((1000),mean = connectionThreshold, sd = 1)
   rn <- dnorm(rn,mean = connectionThreshold, sd = 1)
-  ru <- sample(rn,size = kl, replace = FALSE)
-  
-  plot(rn)
-  abline(v=mean(rn),col='red')
-  
-  mean(rn)
-  mean(ru)
-  
+
   spList[[i]] <- k
-  permList[[i]] <- ru
+  permList[[i]] <- rn
 }
 
 sp <- do.call(rbind,spList)
@@ -64,8 +57,6 @@ permDF <- permDF %>%
   mutate(
     colNum = row_number()
   )
-
-names(spDF)
 
 sDF <- melt(spDF, id = "colNum")
 
@@ -95,7 +86,7 @@ write.csv(PA,file = filename)
 
 #get data input
 
-#use thisVector from HTM-1-Encode.r
+#use thisVector from HTM-1-ScalarEncoder.r
 
 data <- thisVector
 
