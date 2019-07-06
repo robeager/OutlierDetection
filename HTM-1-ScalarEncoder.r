@@ -2,8 +2,9 @@ source("C:\\Users\\vmt8844\\OneDrive - AUT University\\R snippets\\setLibraries.
 
 #====================== Set up framework ============================================
 
-n = 100
-w = 18
+n = 400
+w = 21
+resolution = 0.56
 buckets = n-w+1
 
 lowerBuffer = w
