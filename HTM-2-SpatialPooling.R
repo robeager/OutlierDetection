@@ -4,7 +4,7 @@
 
 miniColumnCount = 2048 #Number of minicolumns available
 connectedPercent = 0.85 #sets out how much of the input space is covered by the each column (randomly)
-connectionThreshold = 0.5
+connectionThreshold = 0.2
 
 #PRad = 631 #Potential Radius - how is this number calculated?
 #LAD = -1 #Local Area Density WTF is this for?
