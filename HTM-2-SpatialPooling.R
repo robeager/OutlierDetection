@@ -4,7 +4,8 @@
 
 miniColumnCount = 2048 #Number of minicolumns available
 connectedPercent = 0.85 #sets out how much of the input space is covered by the each column (randomly)
-connectionThreshold = 0.2
+connectionThreshold = 0.5
+inputCoverage = (n*connectedPercent)
 
 #PRad = 631 #Potential Radius - how is this number calculated?
 #LAD = -1 #Local Area Density WTF is this for?
@@ -34,7 +35,7 @@ for (i in 1:miniColumnCount) {
     k[j] = (k[j]-1)
   }
   
-  rn <- rnorm(n,connectionThreshold,sd = 1)
+  rn <- seq(from = 0, to = 1, length = inputCoverage)
   ru <- round(pnorm(rn,mean = connectionThreshold, sd = 1),2)
   
   spList[[i]] <- k
