@@ -6,7 +6,12 @@
 #' @param sd The standard deviation of the distribution
 #' @param lower The lower limit of the distribution
 #' @param upper The upper limit of the distribution
-rtnorm <- function(n, mean = 0, sd = 1, lower = -1, upper = 1){
+rtnorm <- function(
+  n,
+  mean = 0, 
+  sd = 1, 
+  lower = -1, 
+  upper = 1){
   mean = ifelse(test = (is.na(mean)|| (mean < lower) || (mean > upper)),
                 yes = mean(c(lower, upper)),
                 no = mean)
