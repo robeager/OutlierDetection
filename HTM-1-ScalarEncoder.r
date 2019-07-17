@@ -36,25 +36,22 @@ allTime = c()
 
 #=============== get data ======================
 
-Measurements <- as.data.frame(read.csv(file = "C:\\Users\\vmt8844\\OneDrive - AUT University\\Research Project\\outlier-detection\\data\\hr.csv", header = TRUE, sep = ","))
+Measurements <- as.data.frame(read.csv(file = "C:\\Users\\vmt8844\\OneDrive - AUT University\\Research Project\\outlier-detection\\data\\1226771-R.csv", header = TRUE, sep = ","))
 
 
 
 names(Measurements) <- c(
   "Record",
-  "Parameter",
   "HH",
   "mm",
-  "Value",
-  "InHospDeath"
+  "Value"
 )
 
 
 
 Measurements <- Measurements %>%
   group_by(
-    Record,
-    Parameter
+    Record
   ) %>%
   mutate(
     RowID = row_number(),
@@ -63,7 +60,7 @@ Measurements <- Measurements %>%
     maxRowID = max(RowID)
   )
 
-Measurements$Parameter <- as.character(paste(Measurements$Parameter))
+#Measurements$Parameter <- as.character(paste(Measurements$Parameter))
 
 rows = nrow(Measurements)
 
@@ -211,4 +208,4 @@ finalDF <- left_join(finalDF,minMax, by = c("Record","RowID"))
 
 
 
-write.csv(finalDF,file = "C:\\Users\\vmt8844\\OneDrive - AUT University\\Research Project\\outlier-detection\\data\\measurements_HR.csv")
+write.csv(finalDF,file = "C:\\Users\\vmt8844\\OneDrive - AUT University\\Research Project\\outlier-detection\\data\\htm_results_1226771_differential-R.csv")
